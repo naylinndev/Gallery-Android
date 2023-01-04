@@ -11,7 +11,7 @@
 
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -50,7 +50,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{photo.title}"
-                        android:textSize="15dp"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
                         android:maxLines="1"
                         android:textStyle="bold" />
 
@@ -58,10 +59,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="2"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/white"
+                        android:ellipsize="end"
                         android:text="@{photo.description}"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        android:textSize="13dp"/>
                 </LinearLayout>
 
             </RelativeLayout>

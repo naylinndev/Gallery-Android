@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull
 @Entity(tableName = REMOTE_KEY_TABLE_NAME)
 data class RemoteKeyEntity(
     @NotNull @PrimaryKey
-    val type: String? = "",
+    val type: String = "",
     val nextPage: Int = 1,
     val hasNextPage: Boolean = false
 

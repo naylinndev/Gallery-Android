@@ -1,9 +1,9 @@
 package dev.naylinn.gallery.database
 
-import androidx.databinding.adapters.Converters
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import dev.naylinn.gallery.database.converter.Converters
 import dev.naylinn.gallery.database.dao.CategoryDao
 import dev.naylinn.gallery.database.dao.PhotoDao
 import dev.naylinn.gallery.database.dao.RemoteKeyDao

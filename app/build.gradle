@@ -9,6 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "dev.naylinn.gallery"
         minSdk 21
         targetSdk 32

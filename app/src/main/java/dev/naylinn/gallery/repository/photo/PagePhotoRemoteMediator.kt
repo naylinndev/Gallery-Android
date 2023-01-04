@@ -1,5 +1,6 @@
 package dev.naylinn.gallery.repository.photo
 
+import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -61,7 +62,6 @@ class PagePhotoRemoteMediator(
 
             var isLastPage = false
             val data = netApi.getPhotos(APP_SECRET)
-
             data
                 .onSuccess { response ->
                     val result = response.body()!!
@@ -85,7 +85,6 @@ class PagePhotoRemoteMediator(
                     }
                 }
                 .onFailure {
-
                 }
 
             return MediatorResult.Success(endOfPaginationReached = isLastPage)
