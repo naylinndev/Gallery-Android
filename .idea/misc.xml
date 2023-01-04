@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/top_shadow_gradient.xml" value="0.2115" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2953703703703704" />
+        <entry key="app/src/main/res/layout/activity_photo_by_category.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2953703703703704" />

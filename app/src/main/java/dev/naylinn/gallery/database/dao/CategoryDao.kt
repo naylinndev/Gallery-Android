@@ -7,7 +7,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import dev.naylinn.gallery.database.CATEGORY_TABLE_NAME
+import dev.naylinn.gallery.database.PHOTO_TABLE_NAME
 import dev.naylinn.gallery.database.model.CategoryEntity
+import dev.naylinn.gallery.database.model.PhotoEntity
 
 @Dao
 interface CategoryDao {
@@ -16,4 +18,7 @@ interface CategoryDao {
 
     @Query("SELECT * FROM $CATEGORY_TABLE_NAME ORDER BY updatedAt DESC")
     fun getCategoryLists(): PagingSource<Int, CategoryEntity>
+
+    @Query("SELECT * FROM $CATEGORY_TABLE_NAME WHERE id= :id LIMIT 1")
+    fun getCategory(id: Int):  CategoryEntity?
 }
