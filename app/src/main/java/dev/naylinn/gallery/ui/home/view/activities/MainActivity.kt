@@ -12,7 +12,7 @@ import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ActivityMainBinding
 
 interface FavoriteListener {
-    fun onSwitchFavorite(photoEntity: PhotoEntity)
+    fun onSwitchFavorite(photoEntity: PhotoEntity,position: Int)
 }
 
 class MainActivity : AppCompatActivity() {

@@ -20,4 +20,8 @@ class PhotoRepositoryImpl(private val appDatabase: AppDatabase, private val netA
     ) {
         appDatabase.photoDao().getPhotoLists()
     }.flow
+
+    override suspend fun updatePhoto(photoEntity: PhotoEntity) {
+        appDatabase.photoDao().savePhoto(photoEntity = photoEntity)
+    }
 }

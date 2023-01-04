@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface PhotoRepository {
     fun getPhotos()  : Flow<PagingData<PhotoEntity>>
+    suspend fun updatePhoto(photoEntity: PhotoEntity)
 }

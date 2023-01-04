@@ -30,7 +30,8 @@ class PhotoAdapter(private val favoriteListener: FavoriteListener) :
         getItem(position)?.let {
             holder.bind(
                 photoEntity = it,
-                favoriteListener = favoriteListener
+                favoriteListener = favoriteListener,
+                position = position
             )
         }
     }
@@ -48,10 +49,10 @@ class PhotoAdapter(private val favoriteListener: FavoriteListener) :
 class PhotoViewHolder(
     private val binding: ItemPhotoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(photoEntity: PhotoEntity, favoriteListener: FavoriteListener) {
+    fun bind(photoEntity: PhotoEntity, favoriteListener: FavoriteListener, position: Int) {
         binding.photo = photoEntity
         binding.icFavorite.setOnClickListener(View.OnClickListener {
-            favoriteListener.onSwitchFavorite(photoEntity = photoEntity)
+            favoriteListener.onSwitchFavorite(photoEntity = photoEntity, position = position)
         })
     }
 }

@@ -17,6 +17,7 @@ import dev.naylinn.gallery.ui.home.view.activities.FavoriteListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PhotoFragment : Fragment(), FavoriteListener {
@@ -42,11 +43,16 @@ class PhotoFragment : Fragment(), FavoriteListener {
         initSwipeToRefresh()
     }
 
-    override fun onSwitchFavorite(photoEntity: PhotoEntity) {
+    override fun onSwitchFavorite(photoEntity: PhotoEntity,position : Int) {
         Log.e("TAG", "onSwitchFavorite: ")
+        adapter.notifyItemChanged(position)
+        lifecycleScope.launch {
+            viewModel.switchFavorite(photoEntity = photoEntity)
+        }
     }
 
     private fun initAdapter() {
+        binding.recyclerView.itemAnimator = null
         adapter = PhotoAdapter(favoriteListener = this)
         binding.recyclerView.adapter = adapter.withLoadStateFooter(
             footer = PhotoLoadStateAdapter(adapter)
