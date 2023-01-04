@@ -1,14 +1,17 @@
 package dev.naylinn.gallery.ui.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ItemPhotoBinding
+import dev.naylinn.gallery.ui.home.view.activities.FavoriteListener
 
-class PhotoAdapter : PagingDataAdapter<PhotoEntity,PhotoViewHolder>(PHOTO_COMPARATOR) {
+class PhotoAdapter(private val favoriteListener: FavoriteListener) :
+    PagingDataAdapter<PhotoEntity, PhotoViewHolder>(PHOTO_COMPARATOR) {
     private lateinit var binding: ItemPhotoBinding
 
     companion object {
@@ -24,7 +27,12 @@ class PhotoAdapter : PagingDataAdapter<PhotoEntity,PhotoViewHolder>(PHOTO_COMPAR
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-       holder.bind(getItem(position)!!)
+        getItem(position)?.let {
+            holder.bind(
+                photoEntity = it,
+                favoriteListener = favoriteListener
+            )
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -40,7 +48,10 @@ class PhotoAdapter : PagingDataAdapter<PhotoEntity,PhotoViewHolder>(PHOTO_COMPAR
 class PhotoViewHolder(
     private val binding: ItemPhotoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(photoEntity: PhotoEntity) {
+    fun bind(photoEntity: PhotoEntity, favoriteListener: FavoriteListener) {
         binding.photo = photoEntity
+        binding.icFavorite.setOnClickListener(View.OnClickListener {
+            favoriteListener.onSwitchFavorite(photoEntity = photoEntity)
+        })
     }
 }

@@ -8,7 +8,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dev.naylinn.gallery.R
+import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ActivityMainBinding
+
+interface FavoriteListener {
+    fun onSwitchFavorite(photoEntity: PhotoEntity)
+}
 
 class MainActivity : AppCompatActivity() {
 

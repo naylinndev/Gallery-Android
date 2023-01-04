@@ -31,7 +31,7 @@ data class Photo(
     @SerializedName("image")
     val image: String? = "",
     @SerializedName("updated_at")
-    val updatedAt: String? = "",
+    val updatedAt: Long = 0,
     @SerializedName("categories")
     val categories: List<Category>
 ) : RoomMapper<PhotoEntity> {

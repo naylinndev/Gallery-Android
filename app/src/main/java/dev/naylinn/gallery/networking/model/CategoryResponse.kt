@@ -25,7 +25,7 @@ data class Category(
     @SerializedName("category_image")
     val categoryImage: String? = "",
     @SerializedName("updated_at")
-    val updatedAt: String? = "",
+    val updatedAt: Long = 0,
 ) : RoomMapper<CategoryEntity> {
     override fun mapToRoomEntity() = CategoryEntity(
         id = id,

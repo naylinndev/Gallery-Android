@@ -13,7 +13,7 @@ data class CategoryEntity(
     val id: Int = 0,
     val categoryName: String? = "",
     val categoryImage: String? = "",
-    val updatedAt: String? = "",
+    val updatedAt: Long = 0,
 ) : DomainMapper<Category> {
     override fun mapToDomainModel() = Category(
         id = id,

@@ -61,7 +61,7 @@ class PagePhotoRemoteMediator(
             }
 
             var isLastPage = false
-            val data = netApi.getPhotos(APP_SECRET)
+            val data = netApi.getPhotos(appSecret = APP_SECRET, page = loadKey)
             data
                 .onSuccess { response ->
                     val result = response.body()!!

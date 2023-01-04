@@ -1,22 +1,25 @@
 package dev.naylinn.gallery.ui.home.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.FragmentPhotoBinding
 import dev.naylinn.gallery.ui.home.adapter.PhotoAdapter
 import dev.naylinn.gallery.ui.home.adapter.PhotoLoadStateAdapter
 import dev.naylinn.gallery.ui.home.presentation.PhotoViewModel
+import dev.naylinn.gallery.ui.home.view.activities.FavoriteListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PhotoFragment : Fragment() {
+class PhotoFragment : Fragment(), FavoriteListener {
     private val viewModel: PhotoViewModel by viewModel()
     private lateinit var binding: FragmentPhotoBinding
     private lateinit var adapter: PhotoAdapter
@@ -39,8 +42,12 @@ class PhotoFragment : Fragment() {
         initSwipeToRefresh()
     }
 
+    override fun onSwitchFavorite(photoEntity: PhotoEntity) {
+        Log.e("TAG", "onSwitchFavorite: ")
+    }
+
     private fun initAdapter() {
-        adapter = PhotoAdapter()
+        adapter = PhotoAdapter(favoriteListener = this)
         binding.recyclerView.adapter = adapter.withLoadStateFooter(
             footer = PhotoLoadStateAdapter(adapter)
         )

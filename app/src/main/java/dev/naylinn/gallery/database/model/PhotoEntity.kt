@@ -19,9 +19,9 @@ data class PhotoEntity(
     val make: String? = "",
     val model: String? = "",
     val image: String? = "",
-    val updatedAt: String? = "",
+    val updatedAt: Long = 0,
     val categories: List<CategoryEntity>,
-    val isFavourite : Boolean = false
+    val isFavorite : Boolean = false
 ) : DomainMapper<Photo> {
     override fun mapToDomainModel() = Photo(
         id = id,

@@ -10,12 +10,15 @@ interface NetApi {
     @POST("/api/v1/get-category")
     suspend fun getCategory(
         @Field("app_secret") appSecret: String,
-    ): Response<CategoryResponse>
+        @Field("page") page: Int,
+
+        ): Response<CategoryResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/get-photos")
     suspend fun getPhotos(
         @Field("app_secret") appSecret: String,
+        @Field("page") page: Int,
     ): Response<PhotoResponse>
 
     @FormUrlEncoded
@@ -23,6 +26,7 @@ interface NetApi {
     suspend fun getPhotosByCategory(
         @Field("app_secret") appSecret: String,
         @Field("category_id") categoryId: Int,
+        @Field("page") page: Int,
     ): Response<PhotoResponse>
 
 }
