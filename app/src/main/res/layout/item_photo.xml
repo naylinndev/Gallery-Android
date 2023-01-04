@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:text="@{photo.title}"
                         android:textColor="@color/white"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:maxLines="1"
                         android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
                         android:textColor="@color/white"
                         android:ellipsize="end"
                         android:text="@{photo.description}"
-                        android:textSize="13dp"/>
+                        android:textSize="13sp"/>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView

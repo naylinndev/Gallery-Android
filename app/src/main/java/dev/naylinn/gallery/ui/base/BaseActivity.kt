@@ -18,7 +18,4 @@ abstract class BaseActivity : AppCompatActivity() {
 
   fun showError(@StringRes errorMessage: Int, rootView: View) = snackbar(errorMessage, rootView)
 
-  override fun onBackPressed() {
-    if (supportFragmentManager.backStackEntryCount <= 1) finish() else goBack()
-  }
 }

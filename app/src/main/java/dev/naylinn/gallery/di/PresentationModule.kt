@@ -1,5 +1,6 @@
 package dev.naylinn.gallery.di
 
+import dev.naylinn.gallery.ui.detail.presentation.DetailViewModel
 import dev.naylinn.gallery.ui.home.presentation.CategoryViewModel
 import dev.naylinn.gallery.ui.home.presentation.FavoriteViewModel
 import dev.naylinn.gallery.ui.home.presentation.PhotoViewModel
@@ -12,4 +13,5 @@ val presentationModule = module {
     viewModel { CategoryViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
     viewModel { PhotoByCategoryIdViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

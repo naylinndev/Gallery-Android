@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import dev.naylinn.gallery.common.KEY_CATEGORY_ID
 import dev.naylinn.gallery.database.model.CategoryEntity
 import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ItemCategoryBinding
@@ -47,8 +46,7 @@ class CategoryAdapter() :
         }
 
         holder.itemView.setOnClickListener(View.OnClickListener {
-            val intent = Intent(it.context, PhotoByCategoryIdActivity::class.java)
-            intent.putExtra(KEY_CATEGORY_ID,getItem(position)!!.id)
+            val intent = PhotoByCategoryIdActivity.newInstance(it.context,getItem(position)!!.id)
             it.context.startActivity(intent)
         })
     }

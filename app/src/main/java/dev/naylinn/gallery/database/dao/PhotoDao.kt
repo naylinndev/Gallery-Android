@@ -26,8 +26,8 @@ interface PhotoDao {
     @Query("SELECT * FROM $PHOTO_TABLE_NAME ORDER BY updatedAt DESC")
     fun getPhotoLists(): PagingSource<Int, PhotoEntity>
 
-    @Query("SELECT * FROM $PHOTO_TABLE_NAME ORDER BY updatedAt DESC")
-    fun getPhotoListsByCategoryId(): PagingSource<Int, PhotoEntity>
+    @Query("SELECT * FROM $PHOTO_TABLE_NAME WHERE categories LIKE '%\"id\":'  || :categoryId || '%' ORDER BY updatedAt DESC")
+    fun getPhotoListsByCategoryId(categoryId : Int): PagingSource<Int, PhotoEntity>
 
     @Query("SELECT * FROM $PHOTO_TABLE_NAME WHERE isFavorite IS 1 ORDER BY updatedAt DESC")
     fun getFavoritePhotoLists(): PagingSource<Int, PhotoEntity>

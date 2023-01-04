@@ -22,7 +22,7 @@ class PhotoByCategoryIdRepositoryImpl(
         config = PagingConfig(PHOTO_PAGE_SIZE),
         remoteMediator = PagePhotoByCategoryIdRemoteMediator(categoryId, appDatabase, netApi)
     ) {
-        appDatabase.photoDao().getPhotoListsByCategoryId()
+        appDatabase.photoDao().getPhotoListsByCategoryId(categoryId= categoryId)
     }.flow
 
     override suspend fun updatePhoto(photoEntity: PhotoEntity) {

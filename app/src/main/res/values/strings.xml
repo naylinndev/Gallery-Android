@@ -3,4 +3,9 @@
     <string name="title_photo">Photo</string>
     <string name="title_category">Category</string>
     <string name="title_favorite">Favorites</string>
+
+
+    <string name="label_name">Name</string>
+    <string name="label_description">Description</string>
+    <string name="label_model">Model</string>
 </resources>

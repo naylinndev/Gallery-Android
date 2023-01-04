@@ -2,6 +2,8 @@ package dev.naylinn.gallery.di
 
 import dev.naylinn.gallery.repository.category.CategoryRepository
 import dev.naylinn.gallery.repository.category.CategoryRepositoryImpl
+import dev.naylinn.gallery.repository.detail.DetailRepository
+import dev.naylinn.gallery.repository.detail.DetailRepositoryImpl
 import dev.naylinn.gallery.repository.favorite.FavoriteRepository
 import dev.naylinn.gallery.repository.favorite.FavoriteRepositoryImpl
 import dev.naylinn.gallery.repository.photo.PhotoRepository
@@ -15,5 +17,6 @@ val repositoryModule = module {
     factory<CategoryRepository> { CategoryRepositoryImpl(get(), get()) }
     factory<FavoriteRepository> { FavoriteRepositoryImpl(get(), get()) }
     factory<PhotoByCategoryIdRepository> { PhotoByCategoryIdRepositoryImpl(get(), get()) }
+    factory<DetailRepository> { DetailRepositoryImpl(get()) }
 
 }

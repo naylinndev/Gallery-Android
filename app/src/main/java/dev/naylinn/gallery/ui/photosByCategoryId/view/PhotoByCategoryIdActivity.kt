@@ -1,5 +1,6 @@
 package dev.naylinn.gallery.ui.photosByCategoryId.view
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.getIntent
 import android.os.Bundle
@@ -8,7 +9,6 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgument
 import androidx.paging.LoadState
-import dev.naylinn.gallery.common.KEY_CATEGORY_ID
 import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ActivityPhotoByCategoryBinding
 import dev.naylinn.gallery.databinding.FragmentPhotoBinding
@@ -31,6 +31,14 @@ class PhotoByCategoryIdActivity : BaseActivity(), FavoriteListener {
     private lateinit var adapter: PhotoByCategoryIdAdapter
     private var mCategoryId: Int = 0
 
+    companion object {
+       private const val KEY_CATEGORY_ID = "category_id"
+        fun newInstance(context: Context, categoryId: Int): Intent {
+            val intent = Intent(context, PhotoByCategoryIdActivity::class.java)
+            intent.putExtra(KEY_CATEGORY_ID, categoryId)
+            return intent
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +56,7 @@ class PhotoByCategoryIdActivity : BaseActivity(), FavoriteListener {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
         return true
     }
 

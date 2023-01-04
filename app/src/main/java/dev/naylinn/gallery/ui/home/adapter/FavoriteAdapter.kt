@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ItemPhotoBinding
+import dev.naylinn.gallery.ui.detail.view.DetailActivity
 import dev.naylinn.gallery.ui.home.view.activities.FavoriteListener
 
 class FavoriteAdapter(private val favoriteListener: FavoriteListener) :
@@ -34,6 +35,10 @@ class FavoriteAdapter(private val favoriteListener: FavoriteListener) :
                 position = position
             )
         }
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            val intent = DetailActivity.newInstance(it.context,getItem(position)!!.id)
+            it.context.startActivity(intent)
+        })
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
