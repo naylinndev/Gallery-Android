@@ -8,10 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dev.naylinn.gallery.database.model.PhotoEntity
+import dev.naylinn.gallery.databinding.FragmentCategoryBinding
 import dev.naylinn.gallery.databinding.FragmentPhotoBinding
+import dev.naylinn.gallery.ui.home.adapter.CategoryAdapter
 import dev.naylinn.gallery.ui.home.adapter.PhotoAdapter
 import dev.naylinn.gallery.ui.home.adapter.FooterLoadStateAdapter
+import dev.naylinn.gallery.ui.home.presentation.CategoryViewModel
 import dev.naylinn.gallery.ui.home.presentation.PhotoViewModel
 import dev.naylinn.gallery.ui.home.view.activities.FavoriteListener
 import kotlinx.coroutines.flow.collectLatest
@@ -20,10 +25,10 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PhotoFragment : Fragment(), FavoriteListener {
-    private val viewModel: PhotoViewModel by viewModel()
-    private lateinit var binding: FragmentPhotoBinding
-    private lateinit var adapter: PhotoAdapter
+class CategoryFragment : Fragment() {
+    private val viewModel: CategoryViewModel by viewModel()
+    private lateinit var binding: FragmentCategoryBinding
+    private lateinit var adapter: CategoryAdapter
 
 
     override fun onCreateView(
@@ -32,7 +37,7 @@ class PhotoFragment : Fragment(), FavoriteListener {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentPhotoBinding.inflate(inflater, container, false)
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -43,17 +48,13 @@ class PhotoFragment : Fragment(), FavoriteListener {
         initSwipeToRefresh()
     }
 
-    override fun onSwitchFavorite(photoEntity: PhotoEntity,position : Int) {
-        Log.e("TAG", "onSwitchFavorite: ")
-        adapter.notifyItemChanged(position)
-        lifecycleScope.launch {
-            viewModel.switchFavorite(photoEntity = photoEntity)
-        }
-    }
 
     private fun initAdapter() {
         binding.recyclerView.itemAnimator = null
-        adapter = PhotoAdapter(favoriteListener = this)
+        adapter = CategoryAdapter()
+        val layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.layoutManager = layoutManager
+
         binding.recyclerView.adapter = adapter.withLoadStateFooter(
             footer = FooterLoadStateAdapter()
         )
@@ -66,7 +67,7 @@ class PhotoFragment : Fragment(), FavoriteListener {
         }
 
         lifecycleScope.launchWhenCreated {
-            viewModel.photos.collectLatest {
+            viewModel.categories.collectLatest {
                 adapter.submitData(it)
             }
         }

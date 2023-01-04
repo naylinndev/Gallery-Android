@@ -1,5 +1,7 @@
 package dev.naylinn.gallery.database.dao
 
+import androidx.paging.PagingData
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,6 +14,6 @@ interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCategories(categoryEntities: List<CategoryEntity>)
 
-    @Query("SELECT * FROM $CATEGORY_TABLE_NAME ORDER BY updatedAt ASC")
-    suspend fun getCategoryLists(): List<CategoryEntity>
+    @Query("SELECT * FROM $CATEGORY_TABLE_NAME ORDER BY updatedAt DESC")
+    fun getCategoryLists(): PagingSource<Int, CategoryEntity>
 }

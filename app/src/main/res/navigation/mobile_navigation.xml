@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="dev.naylinn.gallery.ui.dashboard.DashboardFragment"
+        android:name="dev.naylinn.gallery.ui.home.view.fragments.CategoryFragment"
         android:label="@string/title_category"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/navigation_notifications"

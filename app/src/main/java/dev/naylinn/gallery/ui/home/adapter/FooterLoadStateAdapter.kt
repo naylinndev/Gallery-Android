@@ -6,12 +6,9 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dev.naylinn.gallery.R
-import dev.naylinn.gallery.database.model.PhotoEntity
 import dev.naylinn.gallery.databinding.ItemFooterLoadmoreBinding
-import dev.naylinn.gallery.databinding.ItemPhotoBinding
 
-class PhotoLoadStateAdapter(private val photoAdapter: PhotoAdapter) :
+class FooterLoadStateAdapter() :
     LoadStateAdapter<ItemFooterLoadMoreViewHolder>() {
 
     private lateinit var binding: ItemFooterLoadmoreBinding
