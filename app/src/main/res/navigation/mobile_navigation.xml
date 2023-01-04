@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="dev.naylinn.gallery.ui.home.view.fragments.PostFragment"
+        android:name="dev.naylinn.gallery.ui.home.view.fragments.PhotoFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_photo" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

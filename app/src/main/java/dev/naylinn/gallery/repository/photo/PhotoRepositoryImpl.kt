@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 
 class PhotoRepositoryImpl(private val appDatabase: AppDatabase, private val netApi: NetApi) :
     PhotoRepository {
+
     @OptIn(ExperimentalPagingApi::class)
     override fun getPhotos(): Flow<PagingData<PhotoEntity>> = Pager(
         config = PagingConfig(10),

@@ -1,6 +1,7 @@
 package dev.naylinn.gallery
 
 import android.app.Application
+import dev.naylinn.gallery.di.*
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,12 +22,12 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
-           // modules(appModules)
+            modules(appModules)
         }
     }
 }
-//
-//val appModules = listOf(
-//    appModule, networkingModule, databaseModule,
-//    repositoryModule,presentationModule
-//)
+
+val appModules = listOf(
+    appModule, networkingModule, databaseModule,
+    repositoryModule,presentationModule
+)
