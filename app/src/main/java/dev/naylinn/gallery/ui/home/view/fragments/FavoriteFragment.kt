@@ -46,7 +46,6 @@ class FavoriteFragment : Fragment(), FavoriteListener {
     }
 
     override fun onSwitchFavorite(photoEntity: PhotoEntity,position : Int) {
-        Log.e("TAG", "onSwitchFavorite: ")
         adapter.notifyItemChanged(position)
         lifecycleScope.launch {
             viewModel.switchFavorite(photoEntity = photoEntity)
