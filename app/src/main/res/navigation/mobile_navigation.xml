@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="dev.naylinn.gallery.ui.notifications.NotificationsFragment"
+        android:name="dev.naylinn.gallery.ui.home.view.fragments.FavoriteFragment"
         android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_favorite" />
 </navigation>
