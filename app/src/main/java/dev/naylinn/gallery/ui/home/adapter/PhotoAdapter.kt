@@ -35,11 +35,12 @@ class PhotoAdapter(private val favoriteListener: FavoriteListener) :
                 favoriteListener = favoriteListener,
                 position = position
             )
+            holder.itemView.setOnClickListener(View.OnClickListener { view ->
+                val intent = DetailActivity.newInstance(view.context, it.id)
+                view.context.startActivity(intent)
+            })
         }
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            val intent = DetailActivity.newInstance(it.context,getItem(position)!!.id)
-            it.context.startActivity(intent)
-        })
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
